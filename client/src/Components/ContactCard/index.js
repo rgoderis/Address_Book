@@ -3,7 +3,7 @@ import React from "react";
 function ContactCard(props){
     return (
         <div>
-            <p>{props.lastName}, {props.firstName}</p>
+            <h2>{props.lastName}, {props.firstName}</h2>
         </div>
     )
 }

@@ -3,14 +3,21 @@ import React from "react";
 function Info (props){
     return (
         <div>
-            <p>Email: {props.email}</p>
-            <p>Address: {props.address}</p>
-            <p>Birthday: {props.birthday}</p>
+            <button>View More</button>
             <div>
-                <h3>Notes</h3>
-                {props.notes}
+                <p>Email: {props.email}</p>
+                <p>Phone: {props.phone}</p>
+                <p>Address: {props.address}</p>
+                <p>Birthday: {props.birthday}</p>
+                <div>
+                    <h3>Notes</h3>
+                    {props.notes.map(note=>(
+                        <p>{note}</p>
+                    ))}
+                </div>
             </div>
         </div>
+
     )
 }
 
