@@ -1,5 +1,7 @@
 import React from "react";
-import API from "../../utils/API"
+import API from "../../utils/API";
+import Input from "../Input";
+import DropDown from "../DropDown"
 
 class NewContact extends React.Component{
     state = {
@@ -20,6 +22,11 @@ class NewContact extends React.Component{
         }
     }
 
+    handleInputChange = e=>{
+        const {name, value} = e.target;
+        this.setState({[name]: value})
+    }
+
     componentDidMount(){
         let days=[]
         for(let i=1; i <=31; i++){
@@ -36,11 +43,23 @@ class NewContact extends React.Component{
                         <div className="row">
                             <div className="col-lg-6">
                                 <label>First Name</label>
-                                <input className="form-control" type="text" placeholder="First Name"></input>
+                                <Input
+                                    placeholder = {"First Name"}
+                                    type= {"text"}
+                                    value = {this.state.contact.firstName}
+                                    onChange = {this.handleInputChange}
+                                    name = {"firstName"}
+                                />
                             </div>
                             <div className="col-lg-6">
                                 <label>Last Name</label>
-                                <input className="form-control" type="text" placeholder="Last Name"></input>
+                                <Input
+                                    placeholder = {"Last Name"}
+                                    type= {"text"}
+                                    value = {this.state.contact.lastName}
+                                    onChange = {this.handleInputChange}
+                                    name = {"lastName"}
+                                />
                             </div>
                         </div>
                     </div>
@@ -48,27 +67,41 @@ class NewContact extends React.Component{
                         <div className="row">
                             <div className="col-lg-6">
                                 <label>Email</label>
-                                <input className="form-control" type="email" placeholder="Email"></input>
+                                <Input
+                                    placeholder = {"Email"}
+                                    type= {"email"}
+                                    value = {this.state.contact.email}
+                                    onChange = {this.handleInputChange}
+                                    name = {"email"}
+                                />
                             </div>
                             <div className="col-lg-3">
                                 <label>Phone Number</label>
-                                <input className="form-control" type="tel" placeholder="Phone Number"></input>
+                                <Input
+                                    placeholder = {"Phone Number"}
+                                    type= {"tel"}
+                                    value = {this.state.contact.phoneNumber}
+                                    onChange = {this.handleInputChange}
+                                    name = {"phoneNumber"}
+                                />
                             </div>
                             <div className="col-lg-2">
                                 <label>Birth Month</label>
-                                <select class="form-control">
-                                    {this.state.months.map(month=>(
-                                        <option>{month}</option>
-                                    ))}
-                                </select>
+                                <DropDown
+                                    array = {this.state.months}
+                                    value = {this.state.contact.birthMonth}
+                                    onChange = {this.handleInputChange}
+                                    name={"birthday.month"}
+                                />
                             </div>
                             <div className="col-lg-1">
                                 <label>Birth Day</label>
-                                <select class="form-control">
-                                    {this.state.days.map(day=>(
-                                        <option>{day}</option>
-                                    ))}
-                                </select>
+                                <DropDown
+                                    array = {this.state.days}
+                                    value = {this.state.contact.birthDay}
+                                    onChange = {this.handleInputChange}
+                                    name={"birthday.day"}
+                                />
                             </div>
                         </div>
                     </div>
@@ -76,20 +109,39 @@ class NewContact extends React.Component{
                         <label>Address</label>
                         <div className="row">
                             <div className="col-lg-6">
-                                <input className="form-control" type="text" placeholder="Address"></input>
+                                <Input
+                                    placeholder = {"Address"}
+                                    type= {"text"}
+                                    value = {this.state.contact.address}
+                                    onChange = {this.handleInputChange}
+                                    name = {"address.address"}
+                                />
                             </div>
                             <div className="col-lg-3">
-                                <input className="form-control"  type="text" placeholder="City"></input>
+                                <Input
+                                    placeholder = {"City"}
+                                    type= {"text"}
+                                    value = {this.state.contact.city}
+                                    onChange = {this.handleInputChange}
+                                    name = {"address.city"}
+                                />
                             </div>
                             <div className="col-lg-1">
-                                <select class="form-control">
-                                    {this.state.states.map(s=>(
-                                        <option>{s}</option>
-                                    ))}
-                                </select>
+                                <DropDown
+                                    array = {this.state.states}
+                                    value = {this.state.contact.state}
+                                    onChange = {this.handleInputChange}
+                                    name={"address.state"}
+                                />
                             </div>
                             <div className="col-lg-2">
-                                <input className="form-control"  type="number" placeholder="Zip"></input>
+                                <Input
+                                    placeholder = {"Zip"}
+                                    type= {"text"}
+                                    value = {this.state.contact.zip}
+                                    onChange = {this.handleInputChange}
+                                    name = {"address.zip"}
+                                />
                             </div>
                         </div>
                     </div>
