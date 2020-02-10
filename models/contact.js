@@ -6,8 +6,18 @@ const Contact = new Schema({
     firstName: String,
     email: String,
     phoneNumber: String,
-    address: String,
-    birthday: String,
+    address: 
+            {
+                address: String,
+                city: String,
+                state: String,
+                zip: String
+            },
+    birthday: 
+            {
+                month: String,
+                day: String
+            },
     notes: [{
         type: Schema.Types.ObjectId,
         ref: 'notes'
