@@ -25,6 +25,19 @@ class Landing extends React.Component {
             },
         ]
     }
+    loadContacts = ()=>{
+        API.getContacts()
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+
+    componentDidMount(){
+        this.loadContacts();
+    }
 
     render(){
         return (

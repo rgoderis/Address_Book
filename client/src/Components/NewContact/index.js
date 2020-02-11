@@ -43,7 +43,9 @@ class NewContact extends React.Component{
                 birthMonth: this.state.birthMonth
             })
             .then(res=>{
-                console.log(res)
+                if(res.status=== 200){
+                    window.location.reload()
+                }
             })
             .catch(err=>console.log(err))
         } else {
@@ -52,24 +54,14 @@ class NewContact extends React.Component{
         }
     }
 
-    loadContacts = ()=>{
-        API.getContacts()
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    }
-
     componentDidMount(){
-        this.loadContacts()
         let days=[]
         for(let i=1; i <=31; i++){
             days.push(i)
         }
         this.setState({days: days})
     }
+    
     render(){
         return (
             <div className="container">
