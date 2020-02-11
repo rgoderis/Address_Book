@@ -20,4 +20,4 @@ const Contact = new Schema({
 // , {collection: 'contacts'}
 );
 
-module.exports = mongoose.model('contacts', Contact);
+module.exports = mongoose.model('Contact', Contact);
