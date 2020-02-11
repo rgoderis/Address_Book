@@ -7,11 +7,17 @@ const Contact = new Schema({
     email: String,
     phoneNumber: String,
     address: String,
-    birthday: String,
+    city: String,
+    state: String,
+    zip: String,
+    birthMonth: String,
+    birthDay: String,
     notes: [{
         type: Schema.Types.ObjectId,
         ref: 'notes'
     }]
-}, {collection: 'contacts'});
+}
+// , {collection: 'contacts'}
+);
 
 module.exports = mongoose.model('contacts', Contact);

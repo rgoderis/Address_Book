@@ -1,7 +1,7 @@
 /* === Dependencies === */
 const express = require("express");
 const mongoose = require('mongoose');
-const routes = require('./routes/index');
+const routes = require('./routes');
 
 /* === Set the PORT to work with deployment environment === */
 const PORT = process.env.PORT || 3001; 
@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 /* Serve up static assets (usually on heroku) */
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static('./client/build'));
-};
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static('./client/build'));
+// };
 
 /* === Routing === */
 app.use(routes);
