@@ -29,22 +29,30 @@ class NewContact extends React.Component{
 
     handleFormSubmit = event =>{
         event.preventDefault()
-        API.saveContact({
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            phoneNumber: this.state.phoneNumber,
-            email: this.state.email,
-            address: this.state.address,
-            city: this.state.city,
-            state: this.state.state,
-            zip: this.state.zip,
-            birthDay: this.state.birthDay,
-            birthMonth: this.state.birthMonth
-        })
-        .catch(err=>console.log(err))
+        if(this.state.firstName&&this.state.lastName){
+            API.saveContact({
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                phoneNumber: this.state.phoneNumber,
+                email: this.state.email,
+                address: this.state.address,
+                city: this.state.city,
+                state: this.state.state,
+                zip: this.state.zip,
+                birthDay: this.state.birthDay,
+                birthMonth: this.state.birthMonth
+            })
+            .then(res=>{
+                console.log(res)
+            })
+            .catch(err=>console.log(err))
+        } else {
+            console.log("Please enter a first and last name")
+            return false
+        }
     }
 
-    loadContact = ()=>{
+    loadContacts = ()=>{
         API.getContacts()
         .then(res=>{
             console.log(res)
@@ -55,7 +63,7 @@ class NewContact extends React.Component{
     }
 
     componentDidMount(){
-        this.loadContact()
+        this.loadContacts()
         let days=[]
         for(let i=1; i <=31; i++){
             days.push(i)

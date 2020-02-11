@@ -9,14 +9,11 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={NewContact}/>
+          <Route exact path="/" component={Landing}/>
+          <Route exact path="/new" component={NewContact}/>
         </Switch>
       </div>
     </Router>
-    // <div className="App">
-    //   {/* <Landing/> */}
-    //   <NewContact/>
-    // </div>
   );
 }
 
