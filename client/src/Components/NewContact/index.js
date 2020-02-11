@@ -8,23 +8,37 @@ class NewContact extends React.Component{
         months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         days:[],
         states: ["AL","AK", "AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA", "WA","WV","WI","WY"],
-        contact: {
-            firstName: "",
-            lastName: "",
-            email: "",
-            phoneNumber: "",
-            birthMonth: "",
-            birthDay: "",
-            address: "",
-            city: "",
-            state: "",
-            zip: ""
-        }
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        birthMonth: "",
+        birthDay: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: ""
     }
 
-    handleInputChange = e=>{
-        const {name, value} = e.target;
-        this.setState({[name]: value})
+    handleInputChange = event=>{
+        const {name, value} = event.target;
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleFormSubmit = event =>{
+        event.preventDefault()
+        console.log(this.state.firstName)
+        console.log(this.state.lastName)
+        console.log(this.state.email)
+        console.log(this.state.phoneNumber)
+        console.log(this.state.birthMonth)
+        console.log(this.state.birthDay)
+        console.log(this.state.address)
+        console.log(this.state.city)
+        console.log(this.state.state)
+        console.log(this.state.zip)
     }
 
     componentDidMount(){
@@ -44,21 +58,21 @@ class NewContact extends React.Component{
                             <div className="col-lg-6">
                                 <label>First Name</label>
                                 <Input
-                                    placeholder = {"First Name"}
-                                    type= {"text"}
-                                    value = {this.state.contact.firstName}
+                                    placeholder = "First Name"
+                                    type= "text"
+                                    value = {this.state.firstName}
                                     onChange = {this.handleInputChange}
-                                    name = {"firstName"}
+                                    name = "firstName"
                                 />
                             </div>
                             <div className="col-lg-6">
                                 <label>Last Name</label>
                                 <Input
-                                    placeholder = {"Last Name"}
-                                    type= {"text"}
-                                    value = {this.state.contact.lastName}
+                                    placeholder = "Last Name"
+                                    type= "text"
+                                    value = {this.state.lastName}
                                     onChange = {this.handleInputChange}
-                                    name = {"lastName"}
+                                    name = "lastName"
                                 />
                             </div>
                         </div>
@@ -68,39 +82,39 @@ class NewContact extends React.Component{
                             <div className="col-lg-6">
                                 <label>Email</label>
                                 <Input
-                                    placeholder = {"Email"}
-                                    type= {"email"}
-                                    value = {this.state.contact.email}
+                                    placeholder = "Email"
+                                    type= "email"
+                                    value={this.state.email}
                                     onChange = {this.handleInputChange}
-                                    name = {"email"}
+                                    name = "email"
                                 />
                             </div>
                             <div className="col-lg-3">
                                 <label>Phone Number</label>
                                 <Input
-                                    placeholder = {"Phone Number"}
-                                    type= {"tel"}
-                                    value = {this.state.contact.phoneNumber}
+                                    placeholder = "Phone Number"
+                                    type= "tel"
+                                    value = {this.state.phoneNumber}
                                     onChange = {this.handleInputChange}
-                                    name = {"phoneNumber"}
+                                    name = "phoneNumber"
                                 />
                             </div>
                             <div className="col-lg-2">
                                 <label>Birth Month</label>
                                 <DropDown
                                     array = {this.state.months}
-                                    value = {this.state.contact.birthMonth}
+                                    value = {this.state.birthMonth}
                                     onChange = {this.handleInputChange}
-                                    name={"birthday.month"}
+                                    name={"birthMonth"}
                                 />
                             </div>
                             <div className="col-lg-1">
                                 <label>Birth Day</label>
                                 <DropDown
                                     array = {this.state.days}
-                                    value = {this.state.contact.birthDay}
+                                    value = {this.state.birthDay}
                                     onChange = {this.handleInputChange}
-                                    name={"birthday.day"}
+                                    name={"birthDay"}
                                 />
                             </div>
                         </div>
@@ -110,42 +124,42 @@ class NewContact extends React.Component{
                         <div className="row">
                             <div className="col-lg-6">
                                 <Input
-                                    placeholder = {"Address"}
-                                    type= {"text"}
-                                    value = {this.state.contact.address}
+                                    placeholder = "Address"
+                                    type= "text"
+                                    value = {this.state.address}
                                     onChange = {this.handleInputChange}
-                                    name = {"address.address"}
+                                    name = "address"
                                 />
                             </div>
                             <div className="col-lg-3">
                                 <Input
-                                    placeholder = {"City"}
-                                    type= {"text"}
-                                    value = {this.state.contact.city}
+                                    placeholder = "City"
+                                    type= "text"
+                                    value = {this.state.city}
                                     onChange = {this.handleInputChange}
-                                    name = {"address.city"}
+                                    name = "city"
                                 />
                             </div>
                             <div className="col-lg-1">
                                 <DropDown
                                     array = {this.state.states}
-                                    value = {this.state.contact.state}
+                                    value = {this.state.state}
                                     onChange = {this.handleInputChange}
-                                    name={"address.state"}
+                                    name={"state"}
                                 />
                             </div>
                             <div className="col-lg-2">
                                 <Input
-                                    placeholder = {"Zip"}
-                                    type= {"text"}
-                                    value = {this.state.contact.zip}
+                                    placeholder = "Zip"
+                                    type= "text"
+                                    value = {this.state.zip}
                                     onChange = {this.handleInputChange}
-                                    name = {"address.zip"}
+                                    name = "zip"
                                 />
                             </div>
                         </div>
                     </div>
-                    <button className="btn btn-primary btn-lg">Add Contact</button>
+                    <button className="btn btn-primary btn-lg" onClick={this.handleFormSubmit}>Add Contact</button>
                 </form>
             </div>
         )
