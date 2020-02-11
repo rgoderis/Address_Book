@@ -1,6 +1,5 @@
 import React from "react";
 import ContactCard from "../ContactCard"
-import Info from "../Info"
 
 class Landing extends React.Component {
     state = {
@@ -47,16 +46,13 @@ class Landing extends React.Component {
                     <ContactCard
                         firstName = {contact.firstName}
                         lastName = {contact.lastName}
-                        birthday = {contact.birthday}
+                        birthMonth = {contact.birthMonth}
+                        birthDay = {contact.birthDay}
                         email = {contact.email}
                         address = {contact.address}
-                        notes = {contact.notes}
-                        phone = {contact.phone}
-                    />
-                    <Info
-                        birthday = {contact.birthday}
-                        email = {contact.email}
-                        address = {contact.address}
+                        city = {contact.city}
+                        state = {contact.state}
+                        zip = {contact.zip}
                         notes = {contact.notes}
                         phone = {contact.phone}
                     />
