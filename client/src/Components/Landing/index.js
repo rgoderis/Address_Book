@@ -1,6 +1,6 @@
 import React from "react";
-import ContactCard from "../ContactCard";
 import API from "../../utils/API"
+import {Link} from "react-router-dom"
 
 
 class Landing extends React.Component {
@@ -24,28 +24,20 @@ class Landing extends React.Component {
 
     componentDidMount(){
         this.loadContacts();
+        console.log(this.state.contacts)
     }
 
     render(){
         return (
             <div>
-            {this.state.contacts.map(contact=>(
-                <div>
-                    <ContactCard
-                        firstName = {contact.firstName}
-                        lastName = {contact.lastName}
-                        birthMonth = {contact.birthMonth}
-                        birthDay = {contact.birthDay}
-                        email = {contact.email}
-                        address = {contact.address}
-                        city = {contact.city}
-                        state = {contact.state}
-                        zip = {contact.zip}
-                        notes = {contact.notes}
-                        phone = {contact.phone}
-                    />
-                </div>
-            ))}
+                <h2>Contact List</h2>
+                {this.state.contacts.map(contact=>(
+                    <div>
+                        <Link to={"/details/"+contact._id}>
+                            <h3>{contact.lastName}, {contact.firstName}</h3>
+                        </Link>
+                    </div>
+                ))}
             </div>
         )
     }
