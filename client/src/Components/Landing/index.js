@@ -1,33 +1,21 @@
 import React from "react";
-import ContactCard from "../ContactCard"
+import ContactCard from "../ContactCard";
+import API from "../../utils/API"
+
 
 class Landing extends React.Component {
     state = {
-        contacts: [
-            {
-                lastName: "Smith",
-                firstName: "John",
-                birthday: "July 4",
-                email: "johnsmith@email.com",
-                phone: "407-575-6164",
-                address: "12345 Main St., Orlando FL. 32801",
-                notes: ["Test"],
-            },
-            {
-                lastName: "Barker",
-                firstName: "Bob",
-                birthday: "December 15",
-                email: "test@email.com",
-                phone: "407-575-6164",
-                address: "22222 Front St., Tampa FL. 33333",
-                notes: ["Test1", "Test2", "Test3"],
-            },
-        ]
+        contacts: []
     }
     loadContacts = ()=>{
+        let contacts = [];
         API.getContacts()
         .then(res=>{
-            console.log(res)
+            res.data.forEach(contact=>{
+                contacts.push(contact)
+            })
+            this.setState({contacts: contacts})
+            console.log(this.state.contacts)
         })
         .catch(err=>{
             console.log(err)
