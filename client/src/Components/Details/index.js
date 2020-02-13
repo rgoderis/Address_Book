@@ -29,6 +29,14 @@ class Details extends React.Component{
         }
     }
 
+    deleteNote = (noteId)=>{
+        API.deleteNote(this.state.contact._id, noteId)
+        .catch(err=>{
+            console.log(err)
+        })
+        window.location.reload()
+    }
+
     componentDidMount(){
         API.getContact(this.props.match.params.id)
         .then(res=>{
@@ -55,7 +63,10 @@ class Details extends React.Component{
                         {!this.state.notes?
                         (<h5>No notes found, please enter one below</h5>):
                         (this.state.contact.notes.map(note=>(
-                            <p>{note.body}</p>
+                            <div>
+                                <p>{note.body}</p>
+                                <button onClick={()=>this.deleteNote(note._id)}>X</button>
+                            </div>
                         )))
                         }
                         <form>

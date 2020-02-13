@@ -44,5 +44,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err=>res.status(422).json(err))
   },
-
+  deleteNote: function(req, res){
+    db.Note
+      .findOneAndDelete({_id: req.params.noteId})
+      .then(function(dbNote){
+        return db.Contact.findOneAndUpdate({_id: req.params.contactId}, {$pull: {notes: dbNote._id}})
+      })
+      .then(dbModel=> res.json(dbModel))
+      .catch(err => res.status(422).json(err))
+  }
 };
