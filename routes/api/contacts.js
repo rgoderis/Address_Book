@@ -16,5 +16,6 @@ router
 router
   .route("/:id/note")
   .post(contactsController.addNote)
+  .delete(contactsController.deleteNote)
 
 module.exports = router;
