@@ -46,9 +46,9 @@ module.exports = {
   },
   deleteNote: function(req, res){
     db.Note
-      .findOneAndDelete({_id: req.params.id})
+      .findOneAndDelete({_id: req.params.commentId})
       .then(function(dbNote){
-        return db.Contact.findOneAndUpdate({_id: req.params.id}, {$pull: {notes: dbNote._id}})
+        return db.Contact.findOneAndUpdate({_id: req.params.contactId}, {$pull: {notes: dbNote._id}})
       })
       .then(dbModel=> res.json(dbModel))
       .catch(err => res.status(422).json(err))

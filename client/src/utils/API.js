@@ -19,5 +19,8 @@ export default {
   },
   saveNote: function(id, noteData) {
     return axios.post("/api/contacts/"+id+"/note", noteData)
+  },
+  deleteNote: function(contactId, noteId){
+    return axios.delete("/api/contacts/"+contactId+"/note/"+noteId)
   }
 };
