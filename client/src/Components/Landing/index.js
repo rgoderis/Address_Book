@@ -15,7 +15,6 @@ class Landing extends React.Component {
                 contacts.push(contact)
             })
             this.setState({contacts: contacts})
-            console.log(this.state.contacts)
         })
         .catch(err=>{
             console.log(err)
@@ -32,11 +31,9 @@ class Landing extends React.Component {
             <div>
                 <h2>Contact List</h2>
                 {this.state.contacts.map(contact=>(
-                    <div>
-                        <Link to={"/details/"+contact._id}>
-                            <h3>{contact.lastName}, {contact.firstName}</h3>
-                        </Link>
-                    </div>
+                    <Link to={"/details/"+contact._id}>
+                        <h3>{contact.lastName}, {contact.firstName}</h3>
+                    </Link>
                 ))}
             </div>
         )

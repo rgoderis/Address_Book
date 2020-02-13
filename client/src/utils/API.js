@@ -16,5 +16,8 @@ export default {
   // Saves a book to the database
   saveContact: function(contactData) {
     return axios.post("/api/contacts", contactData);
+  },
+  saveNote: function(id, noteData) {
+    return axios.post("/api/contacts/"+id+"/note", noteData)
   }
 };

@@ -13,4 +13,8 @@ router
   .put(contactsController.update)
   .delete(contactsController.remove);
 
+router
+  .route("/:id/note")
+  .post(contactsController.addNote)
+
 module.exports = router;
