@@ -65,7 +65,7 @@ class NewContact extends React.Component{
     render(){
         return (
             <div>
-                <h2>New Contact</h2>
+                <h1 className="text-center">New Contact</h1>
                 <form>
                     <div className="form-group">
                         <div className="row">
