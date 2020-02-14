@@ -49,29 +49,33 @@ class Details extends React.Component{
 
     render(){
         return(
-            <div className="container">
-                <div className="jumbotron">
-                    <h3>{this.state.contact.firstName} {this.state.contact.lastName}</h3>
+            <div>
+                <div className="text-center">
+                    <h1>Contact Information</h1>
+                    <br/>
+                    <h2>{this.state.contact.firstName} {this.state.contact.lastName}</h2>
                     <div>
-                        <h5>Phone Number: {this.state.contact.phoneNumber}</h5>
-                        <h5>Email: {this.state.contact.email}</h5>
-                        <h5>Address: {this.state.contact.address} {this.state.contact.city} {this.state.contact.state}. {this.state.contact.zip}</h5>
-                        <h5>Birthday: {this.state.contact.birthMonth} {this.state.contact.birthDay}</h5>
+                        <h4>Phone Number: {this.state.contact.phoneNumber}</h4>
+                        <h4>Email: {this.state.contact.email}</h4>
+                        <h4>Address: {this.state.contact.address} {this.state.contact.city} {this.state.contact.state}. {this.state.contact.zip}</h4>
+                        <h4>Birthday: {this.state.contact.birthMonth} {this.state.contact.birthDay}</h4>
                     </div>
+                    <br/>
                     <div>
-                        <h4>Notes</h4>
+                        <h3>Notes</h3>
                         {!this.state.notes?
-                        (<h5>No notes found, please enter one below</h5>):
+                        (<h4>No notes found, please enter one below</h4>):
                         (this.state.contact.notes.map(note=>(
-                            <div>
+                            <div className="mb-4">
                                 <p>{note.body}</p>
-                                <button onClick={()=>this.deleteNote(note._id)}>X</button>
+                                <button className="btn btn-danger" onClick={()=>this.deleteNote(note._id)}>Delete Note</button>
                             </div>
                         )))
                         }
+                        <br/>
                         <form>
-                            <textarea onChange={this.handleInputChange} value={this.state.note}/>
-                            <button onClick={this.formSubmit}>Add Note</button>
+                            <textarea className="form-control mx-auto w-50" onChange={this.handleInputChange} value={this.state.note}/>
+                            <button className="btn btn-success mt-1" onClick={this.formSubmit}>Add Note</button>
                         </form>
                     </div>
                 </div>
