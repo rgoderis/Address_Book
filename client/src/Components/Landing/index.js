@@ -21,6 +21,12 @@ class Landing extends React.Component {
         })
     }
 
+    deleteContact=(id)=>{
+        API.deleteContact(id)
+        .catch(err=>console.log(err))
+        window.location.reload()
+    }
+
     componentDidMount(){
         this.loadContacts();
         console.log(this.state.contacts)
@@ -31,9 +37,12 @@ class Landing extends React.Component {
             <div>
                 <h2>Contact List</h2>
                 {this.state.contacts.map(contact=>(
-                    <Link to={"/details/"+contact._id}>
-                        <h3>{contact.lastName}, {contact.firstName}</h3>
-                    </Link>
+                    <div>
+                        <Link to={"/details/"+contact._id}>
+                            <h3>{contact.lastName}, {contact.firstName}</h3>
+                        </Link>
+                        <button onClick={()=>this.deleteContact(contact._id)}>Delete Contact</button>
+                    </div>
                 ))}
             </div>
         )
