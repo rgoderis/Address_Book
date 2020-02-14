@@ -34,14 +34,14 @@ class Landing extends React.Component {
 
     render(){
         return (
-            <div>
-                <h2>Contact List</h2>
+            <div className="text-center">
+                <h1>Contacts</h1>
                 {this.state.contacts.map(contact=>(
                     <div>
-                        <Link to={"/details/"+contact._id}>
-                            <h3>{contact.lastName}, {contact.firstName}</h3>
+                        <Link to={"/details/"+contact._id} className="text-dark d-inline float-left">
+                            <h2>{contact.lastName}, {contact.firstName}</h2>
                         </Link>
-                        <button onClick={()=>this.deleteContact(contact._id)}>Delete Contact</button>
+                        <button className="btn btn-danger float-right" onClick={()=>this.deleteContact(contact._id)}>Delete Contact</button>
                     </div>
                 ))}
             </div>
