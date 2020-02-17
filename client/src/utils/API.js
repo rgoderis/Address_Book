@@ -21,8 +21,12 @@ export default {
     return axios.post("/api/contacts/"+id+"/note", noteData)
   },
   deleteNote: function(contactId, noteId){
-    console.log(contactId)
-    console.log(noteId)
     return axios.delete("/api/contacts/"+contactId+"/note/"+noteId)
+  },
+  searchContacts: function(option, input){
+    console.log("APIs")
+    console.log(option)
+    console.log(input)
+    return axios.get("/api/contacts/"+option+"/"+input)
   }
 };

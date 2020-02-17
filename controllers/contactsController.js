@@ -5,7 +5,7 @@ module.exports = {
   findAll: function(req, res) {
     db.Contact
       .find(req.query)
-    //   .sort({ date: -1 })
+      .sort({ lastName: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -20,6 +20,7 @@ module.exports = {
     db.Contact
       .create(req.body)
       .then(dbModel => res.json(dbModel))
+      .then(res.redirect("/"))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
@@ -52,5 +53,45 @@ module.exports = {
       })
       .then(dbModel=> res.json(dbModel))
       .catch(err => res.status(422).json(err))
+  },
+  searchContacts: function(req, res){
+    let option = req.params.option;
+    let input = req.params.input
+    switch(option){
+      case "lastName":
+        db.Contact
+        .find({lastName: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+        .sort({lastName: 1})
+        .then(dbModel => res.json(dbModel))
+        .catch(err=>res.status(422).json(err))
+        break;
+      case "firstName":
+        db.Contact
+        .find({firstName: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+        .sort({firstName: 1})
+        .then(dbModel => res.json(dbModel))
+        .catch(err=>res.status(422).json(err))
+        break;
+      case "city":
+        db.Contact
+        .find({city: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+        .sort({city: 1})
+        .then(dbModel => res.json(dbModel))
+        .catch(err=>res.status(422).json(err))
+        break;
+      case "state":
+        db.Contact
+        .find({state: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+        .sort({state: 1})
+        .then(dbModel => res.json(dbModel))
+        .catch(err=>res.status(422).json(err))
+        break;
+      case "zip":
+        db.Contact
+        .find({zip: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+        .sort({zip: 1})
+        .then(dbModel => res.json(dbModel))
+        .catch(err=>res.status(422).json(err))
+    }
   }
 };

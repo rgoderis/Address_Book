@@ -19,5 +19,7 @@ router
 router
   .route("/:contactId/note/:noteId")
   .delete(contactsController.deleteNote)
-
+router
+.route("/:option/:input")
+.get(contactsController.searchContacts)
 module.exports = router;
