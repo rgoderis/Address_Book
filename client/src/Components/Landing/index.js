@@ -10,6 +10,7 @@ class Landing extends React.Component {
         option: "",
         input: ""
     }
+
     loadContacts = ()=>{
         let contacts = [];
         API.getContacts()
@@ -30,8 +31,8 @@ class Landing extends React.Component {
         } else {
             this.setState({option:event.target.value})
         }
-        
     }
+
     handleInputChange = event =>{
         this.setState({input: event.target.value})
     }
@@ -54,7 +55,7 @@ class Landing extends React.Component {
         }
     }
 
-    deleteContact=(id)=>{
+    deleteContact=id=>{
         API.deleteContact(id)
         .catch(err=>console.log(err))
         window.location.reload()
@@ -78,19 +79,19 @@ class Landing extends React.Component {
             )
         } else {
             return (
-                <div className="text-center">
+                <div className="ml-5 mr-5">
                     <SearchBar
                         option={this.handleOptionChange}
                         input={this.handleInputChange}
                         onClick={this.handleSearchSubmit}
                     />
-                    <h1>Contacts</h1>
+                    <h1 className="text-center">Contacts</h1>
                     {this.state.contacts.map(contact=>(
-                        <div className="container">
+                        <div className=" mb-2 text-left">
                             <Link to={"/details/"+contact._id} className="text-dark">
-                                <h2>{contact.lastName}, {contact.firstName}</h2>
+                                <h2 className="d-inline">{contact.lastName}, {contact.firstName}</h2>
                             </Link>
-                            <button className="btn btn-danger" onClick={()=>this.deleteContact(contact._id)}>Delete Contact</button>
+                            <button className="btn btn-danger float-right" onClick={()=>this.deleteContact(contact._id)}>Delete Contact</button>
                         </div>
                     ))}
                 </div>

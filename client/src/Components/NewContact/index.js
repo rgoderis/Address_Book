@@ -5,9 +5,9 @@ import DropDown from "../DropDown"
 
 class NewContact extends React.Component{
     state = {
-        months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        months: ["","January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         days:[],
-        states: ["AL","AK", "AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA", "WA","WV","WI","WY"],
+        states: ["","AL","AK", "AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA", "WA","WV","WI","WY"],
         firstName: "",
         lastName: "",
         email: "",
@@ -55,7 +55,7 @@ class NewContact extends React.Component{
     }
 
     componentDidMount(){
-        let days=[]
+        let days=[""]
         for(let i=1; i <=31; i++){
             days.push(i)
         }

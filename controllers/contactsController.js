@@ -20,7 +20,7 @@ module.exports = {
     db.Contact
       .create(req.body)
       .then(dbModel => res.json(dbModel))
-      .then(res.redirect("/"))
+      .then(res=>res.redirect("/"))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {

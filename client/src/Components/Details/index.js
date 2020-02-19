@@ -22,18 +22,14 @@ class Details extends React.Component{
             API.saveNote(this.state.contact._id,{
                 body: this.state.note
             })
-            .catch(err=>{
-                console.log(err)
-            })
+            .catch(err=>console.log(err))
             window.location.reload()             
         }
     }
 
-    deleteNote = (noteId)=>{
+    deleteNote = noteId=>{
         API.deleteNote(this.state.contact._id, noteId)
-        .catch(err=>{
-            console.log(err)
-        })
+        .catch(err=>console.log(err))
         window.location.reload()
     }
 
