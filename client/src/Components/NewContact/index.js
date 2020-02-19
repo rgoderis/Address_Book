@@ -44,7 +44,10 @@ class NewContact extends React.Component{
             })
             .then(res=>{
                 if(res.status=== 200){
-                    window.location.reload()
+                    this.props.history.goBack()
+                }
+                else {
+                    console.log(res.status)
                 }
             })
             .catch(err=>console.log(err))
